@@ -83,7 +83,7 @@ class productCard extends HTMLElement {
                 width: 100%;
                 min-width: 320px;
                 max-width: 1024px;
-                height: 95vh;
+                height: 800px;
                 background: var(--color-secondary);
             }
 
@@ -103,10 +103,10 @@ class productCard extends HTMLElement {
 
             .image-container img {
                 position: absolute;
-                bottom: -20%;
+                bottom: -15%;
                 right: 10%;
                 width: 100%;
-                min-width: 320px;
+                min-width: 360px;
                 max-width: 50%;
             }
 
@@ -134,6 +134,7 @@ class productCard extends HTMLElement {
             }
 
             .price-container span {
+                font-weight: bold;
                 font-size: var(--title-fontsize);
                 color: #ACACAE;
             }
@@ -147,7 +148,38 @@ class productCard extends HTMLElement {
                 font-weight: bold;
                 color: var(--color-secondary);
             }
+            @media (min-width: 1024px){
+                section {
+                    flex-direction: row;
+                }
 
+                .image-container {
+                    width: 50%;
+                    height: 100%;
+                }
+
+                .image-container .image-bgText {
+                    font-size: 8rem;
+                }
+
+                .image-container img {
+                   top: 15%;
+                   right: -15%;
+                   min-width: 800px;
+                   transform: rotate(-30deg);
+                }
+
+                .info-container {
+                    width: 50%;
+                    height: 100%;
+                    padding: 0 3rem 0 3rem;
+                }
+
+                .info-container p {
+                    padding-left: 2rem;
+                }
+
+            }
         </style>
         `
     }
