@@ -6,7 +6,7 @@ class productCard extends HTMLElement {
         });
     };
     static get observedAttributes() {
-        return [ `img`,`title`,`subtitle`,`description`,`price`,`button`];
+        return [ `bgtext`,`img`,`title`,`subtitle`,`description`,`price`,`button`];
     }
 
     attributeChangedCallback(attr,oldVal,newVal){
@@ -27,7 +27,10 @@ class productCard extends HTMLElement {
         `
             <section>
                 <div class='image-container'>
-                        <img src=${this.img} alt="" />
+                    <div class="image-bgText">
+                        <p>${this.bgtext}</p>
+                    </div>
+                    <img src=${this.img} alt="" />
                 </div>
                 <div class='info-container'>
                     <div class='product-title'>
@@ -35,7 +38,7 @@ class productCard extends HTMLElement {
                             ${this.title}
                         </h2>
                         <h3>
-                        ${this.subtitle}
+                            ${this.subtitle}
                         </h3>
                     </div>
                     <p>
@@ -64,18 +67,22 @@ class productCard extends HTMLElement {
                 --color-primary: #47559F;
                 --color-secondary: #F1F1F3;
                 --title-fontsize: 2rem;
-                --subtitle-fontsize: 1rem;
+                --subtitle-fontsize: .9rem;
                 --price-fontsize: 2.5rem;
             }
 
             * {
                 margin: 0;
                 padding: 0;
+                box-sizing: border-box;
             }
 
             section {
                 display: flex;
                 flex-direction: column;
+                width: 100%;
+                min-width: 320px;
+                max-width: 1024px;
                 height: 95vh;
                 background: var(--color-secondary);
             }
@@ -84,14 +91,23 @@ class productCard extends HTMLElement {
                 position: relative;
                 width: 100%;
                 height: 45%;
+                padding-left: 2rem;
                 background: var(--color-primary);
+            }
+
+            .image-container .image-bgText {
+                font-weight: bold;
+                font-size: 5rem;
+                color: rgba(0,0,0,.2)
             }
 
             .image-container img {
                 position: absolute;
                 bottom: -20%;
                 right: 10%;
-                width: 80%;
+                width: 100%;
+                min-width: 320px;
+                max-width: 50%;
             }
 
             .info-container {
@@ -108,6 +124,7 @@ class productCard extends HTMLElement {
 
             .info-container h3 {
                 font-size: var(--subtitle-fontsize);
+                text-transform: uppercase;
                 color: #ACACAE;
             }
 
@@ -117,7 +134,18 @@ class productCard extends HTMLElement {
             }
 
             .price-container span {
-                font-size: var(--title-fontsize)
+                font-size: var(--title-fontsize);
+                color: #ACACAE;
+            }
+
+            .price-container button {
+                width: 110px;
+                background: var(--color-primary);
+                border-radius: 20px;
+                border: none;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: var(--color-secondary);
             }
 
         </style>
